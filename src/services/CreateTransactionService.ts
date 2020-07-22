@@ -29,12 +29,12 @@ class CreateTransactionService {
     }
 
     let findCategory = await categoriesRepository.findOne({
-      where: { title: category.toLowerCase() },
+      where: { title: category },
     });
 
     if (!findCategory) {
       findCategory = categoriesRepository.create({
-        title: category.toLowerCase(),
+        title: category,
       });
 
       await categoriesRepository.save(findCategory);
