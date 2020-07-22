@@ -13,10 +13,6 @@ interface Request {
 }
 
 class CreateTransactionService {
-  // private categoriesRepository:
-  // constructor() {
-  // }
-
   public async execute({
     title,
     type,
@@ -33,11 +29,13 @@ class CreateTransactionService {
     }
 
     let findCategory = await categoriesRepository.findOne({
-      where: { title: category },
+      where: { title: category.toLowerCase() },
     });
 
     if (!findCategory) {
-      findCategory = categoriesRepository.create({ title: category });
+      findCategory = categoriesRepository.create({
+        title: category.toLowerCase(),
+      });
 
       await categoriesRepository.save(findCategory);
     }
