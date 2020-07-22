@@ -23,12 +23,11 @@ export class CreateTransactions1595279512103 implements MigrationInterface {
           },
           {
             name: 'value',
-            type: 'integer',
+            type: 'decimal',
+            precision: 10,
+            scale: 2,
           },
-          {
-            name: 'category_id',
-            type: 'varchar',
-          },
+
           {
             name: 'created_at',
             type: 'timestamp',
